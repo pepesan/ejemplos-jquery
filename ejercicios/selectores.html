@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="autor" content="David Vaquero" />
+		<meta name="generator" content="Brackets" />
+		<meta name="copyright" content="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+		<meta name="robots" content="index, follow" />
+		<meta name="keywords" content="html, ejemplo xhtml, esqueleto xhtml" />
+		<meta name="description" content="Ejemplo de Esqueleto de HTML5 con Jquery" />
+		<title>Mi titulo</title>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script src="selectores.js"></script>
+	</head>
+	<body>
+		<h1>Ejecución de código JQuery</h1>
+		<p class="miclase">parrafo uno</p>
+		<p id="miparrafo">parrafo dos</p>
+		<p> <a href="http://google.es/">enlace a google</a> <a href="#">no lleva a google</a></p>
+		<ul>
+		    <li>1</li>
+		    <li>2</li>
+            <li>3</li>		    
+            <li>4</li>
+		    <li>5</li>
+		    <li>6</li>
+		    <li>7</li>
+		    <li>8</li>
+		    <li>9</li>
+		    <li>10</li>
+		</ul>
+		<div>
+                   <form action="formularios.php" method="post">
+                    <div>
+                        <label for="username"></label>
+                        <input type="text" name="username" id="username" value="usuario" required
+                        placeholder="Nombre de usuario"
+                        />
+                    </div>
+                    <div>
+                        <label for="contra"></label>
+                        <input type="password" name="contra" id="contra" value="" required
+                        placeholder="Contraseña chunga"
+                        autofocus
+                        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                        />
+                    </div>
+                    <input type="submit" name="submit" value="Enviar" id="submit5"/>
+                </form>
+            </div>
+	</body>
+</html>

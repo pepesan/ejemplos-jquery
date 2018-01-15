@@ -1,4 +1,5 @@
 function init(){
+    //Aquí ya se sabe que se ha cargado
     console.log("DOM Cargado Jquery");
     //buscar por etiqueta
     $("h1").hide();
