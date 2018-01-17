@@ -11,31 +11,20 @@
     <meta name="description" content="Ejemplo de Esqueleto de HTML5 con Jquery" />
     <title>Mi titulo</title>
     <script src="../js/jquery-3.2.1.js"></script>
-    <script src="selectores.js"></script>
+    <script src="eventos.js"></script>
 </head>
 
 <body>
     <h1>Ejecución de código JQuery</h1>
-    <p class="miclase">parrafo uno</p>
-    <p id="miparrafo">parrafo dos</p>
-    <p> <a href="http://google.es/">enlace a google</a> <a href="#">no lleva a google</a></p>
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-    </ul>
+    <button id="miboton">Mi botón</button>
+    <button id="otroboton">Mi otro botón</button>
+    <button id="tercerboton">Tercero</button>
+    <input type="text" id="campo" name="campo" value="" />
     <div>
-        <form action="formularios.php" method="post">
+        <form id="login" action="../formularios.php" method="post">
             <div>
                 <label for="username"></label>
-                <input type="text" name="username" id="username" value="usuario" required placeholder="Nombre de usuario" />
+                <input type="text" name="username" id="username" value="" required placeholder="Nombre de usuario" />
             </div>
             <div>
                 <label for="contra"></label>
@@ -44,6 +33,8 @@
             <input type="submit" name="submit" value="Enviar" id="submit5" />
         </form>
     </div>
+    <button id="b1">Botón 1</button>
+    <p><a id="enlace" href="http://google.es/">Enlace a google</a></p>
 </body>
 
 </html>
