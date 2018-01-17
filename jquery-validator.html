@@ -26,10 +26,17 @@
             <div>
                 <label for="username">Nombre de Usuario</label>
                 <input type="text" name="username" id="username" value="usuario" required placeholder="Nombre de usuario" />
+                <label id="username-error" for="username" class="error"></label>
             </div>
             <div>
                 <label for="contra">Contraseña</label>
                 <input type="password" name="contra" id="contra" value="" required placeholder="Contraseña chunga" autofocus pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+                <label id="contra-error" for="contra"  class="error"></label>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="" required placeholder="Email válido"  />
+                <label id="email-error" for="email"  class="error"></label>
             </div>
             <input type="submit" name="submit" value="Enviar" id="submit5" />
         </form>
@@ -66,7 +73,7 @@
                 <legend>Please provide your name, email address (won't be published) and a comment</legend>
                 <p>
                     <label for="cname2">Name (required, at least 2 characters)</label>
-                    <input id="cname2" name="name" minlength="2" type="text" required>
+                    <input id="cname2" name="nombre" minlength="2" type="text" required>
                 </p>
                 <p>
                     <label for="cemail2">E-Mail (required)</label>

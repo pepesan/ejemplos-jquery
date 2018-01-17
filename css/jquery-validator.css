@@ -1,8 +1,8 @@
-input.valid{
-    border: 1px green solid;
+input.valid, textarea.valid{
+    border: 3px green solid;
 }
-input.error{
-    border:1px red solid;
+input.error,textarea.error{
+    border:3px red solid;
 }
 label.error{
     
