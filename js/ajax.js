@@ -56,9 +56,10 @@ function peticionPost(){
         });
 }
 function peticionPostJson(){
-    $.post("ajax.php",{"nombre":"valor","pass":"mipassword"} ,function (datos) {
+    $.post("ajax.php",JSON.stringify({"nombre":"valor","pass":"mipassword"} ),function (datos) {
             console.log("success");
-            $("#resultados").html(datos);
+        console.log(datos);
+            $("#resultados").html("<p>nombre:"+datos.nombre+"</p>");
         },"json")
         .done(function () {
             console.log("second success");
