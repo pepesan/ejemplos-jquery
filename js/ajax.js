@@ -1,13 +1,21 @@
-function peticionGet() {
-    $.get("ajax.json", function (datos) {
+function presentaDatos(codigoHTML){
+    
             console.log("success");
-            $("#resultados").html(datos);
-        })
+            $("#resultados").html(codigoHTML);
+    
+}
+
+function peticionGet() {
+    $.get("ajax-parcial.html",
+          //success function
+          presentaDatos)
         .done(function () {
             console.log("second success");
         })
-        .fail(function () {
-            console.log("error");
+        .fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("error " + textStatus);
+        console.log("incoming Text " + jqXHR.responseText);
+        console.log("error " + errorThrown);
         })
         .always(function () {
             console.log("finished");
@@ -21,12 +29,17 @@ function limpiaResultados() {
 function peticionGetJson() {
     limpiaResultados();
     $("#resultados").html("<h1>Cargando</h1>");
-    $.getJSON("ajax.json", function (result) {
+    $.getJSON("ajax.json", function (resultados) {
             console.log("entro en success");
             limpiaResultados();
-        console.log(result);
-            $.each(result, function (i, field) {
-                $("#resultados").append("<p>" + field.nombre + ":"+field.diputados+"</p>");
+        console.log(resultados);
+            /*
+            for (i in resultados){
+                var resultado=resultados[i];
+            }
+            */
+            $.each(resultados, function (i, resultado) {
+                $("#resultados").append("<p>" + resultado.nombre + ":"+resultado.diputados+"</p>");
             });
         }).done(function () {
             console.log("second success");
@@ -73,12 +86,20 @@ function peticionPostJson(){
             console.log("finished");
         });
 }
+
+function cogeEventosMadrid(){
+    $.get("http://opendata.euskadi.eus/contenidos/ds_eventos/eventos_turisticos/opendata/agenda.json",function(datos){
+       console.log(datos); 
+    });
+}
+
 function init() {
     console.log("DOM Cargado Jquery");
     $("#getButton").click(peticionGet);
     $("#getJsonButton").click(peticionGetJson);
     $("#postButton").click(peticionPost);
     $("#postJsonButton").click(peticionPostJson);
+    $("#eventosMadrid").click(cogeEventosMadrid);
 }
 
 $("document").ready(init);

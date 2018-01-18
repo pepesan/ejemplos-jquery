@@ -1,29 +1,37 @@
-[{
-    "nombre":"Ciudadanos",
-    "diputados":37,
-    "color":"orange"
-},{
-    "nombre":"Junts per Catalunya",
-    "diputados":34,
-    "color":"pink"
-},{
-    "nombre":"Esquerra Republicana de Catalunya",
-    "diputados":32,
-    "color":"brown"
-},{
-    "nombre":"Partit de Socialistes de Catalunya",
-    "diputados":17,
-    "color":"red"
-},{
-    "nombre":"Catalunya en Comú - Podem",
-    "diputados":8,
-    "color":"purple"
-},{
-    "nombre":"CUP",
-    "diputados":4,
-    "color":"yellow"
-},{
-    "nombre":"Partit Popular de Catalunya",
-    "diputados":3,
-    "color":"cyan"
-}]
+[
+    {
+        "nombre": "Ciudadanos",
+        "diputados": 37,
+        "color": "orange"
+    }, 
+    {
+        "nombre": "Junts per Catalunya",
+        "diputados": 34,
+        "color": "pink"
+    }, 
+    {
+        "nombre": "Esquerra Republicana de Catalunya",
+        "diputados": 32,
+        "color": "brown"
+    },
+    {
+        "nombre": "Partit de Socialistes de Catalunya",
+        "diputados": 17,
+        "color": "red"
+    }, 
+    {
+        "nombre": "Catalunya en Comú - Podem",
+        "diputados": 8,
+        "color": "purple"
+    }, 
+    {
+        "nombre": "CUP",
+        "diputados": 4,
+        "color": "yellow"
+    }, 
+    {
+        "nombre": "Partit Popular de Catalunya",
+        "diputados": 3,
+        "color": "cyan"
+    }
+]
