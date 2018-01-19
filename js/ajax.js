@@ -87,19 +87,47 @@ function peticionPostJson(){
         });
 }
 
-function cogeEventosMadrid(){
-    $.get("http://opendata.euskadi.eus/contenidos/ds_eventos/eventos_turisticos/opendata/agenda.json",function(datos){
-       console.log(datos); 
-    });
+function cogeEstablecimientos(){
+    $.getJSON("http://data.colorado.gov/resource/4ykn-tg5h.json?entitystatus=Good%20Standing&principalzipcode=80001",
+        function(datos){
+            console.log(datos); 
+            $("#resultados").html("");
+            $.each(datos,function(posicion,dato){    
+                $("#resultados").append("<p>"+dato.agentfirstname+" regenta "+dato.entityname+"</p>");
+            });
+        })
+        .fail(function () {
+            console.log("error");
+        })
+    ;
+}
+function jsonCallback(json){
+  console.log(json);
 }
 
+
+function cogeEventos(){
+    $.ajax({
+        url:"http://opendata.euskadi.eus/contenidos/ds_recursos_turisticos/alojamientos_rurales_euskadi/opendata/alojamientos.json",
+        type:"GET",
+        cache:false,
+        jsonp: false,
+        dataType:"jsonp",
+        //jsonpCallback: "receive",
+        async: false,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+         console.log(textStatus, errorThrown);
+        }
+    }); 
+}
 function init() {
     console.log("DOM Cargado Jquery");
     $("#getButton").click(peticionGet);
     $("#getJsonButton").click(peticionGetJson);
     $("#postButton").click(peticionPost);
     $("#postJsonButton").click(peticionPostJson);
-    $("#eventosMadrid").click(cogeEventosMadrid);
+    $("#cogeEventos").click(cogeEventos);
+$("#establecimientos").click(cogeEstablecimientos);
 }
 
 $("document").ready(init);
