@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="autor" content="David Vaquero" />
+		<meta name="generator" content="Brackets" />
+		<meta name="copyright" content="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+		<meta name="robots" content="index, follow" />
+		<meta name="keywords" content="html, ejemplo xhtml, esqueleto xhtml" />
+		<meta name="description" content="Ejemplo de Esqueleto de HTML5 con Jquery" />
+		<title>Mi titulo</title>
+		<script src="../js/jquery-3.2.1.js"></script>
+		<script src="../js/jquery.validate.js"></script>
+		<script src="../js/additional-methods.js"></script>
+		<script src="../js/localization/messages_es.js"></script>
+		<script src="validaciones.js"></script>
+	</head>
+	<body>
+		<h1>Ejecución de código JQuery</h1>
+		<div>
+                   <form id="login" action="../formularios.php" method="post">
+                    <div>
+                        <label for="username"></label>
+                        <input type="text" name="username" id="username" value="usuario" required
+                        placeholder="Nombre de usuario"
+                        />
+                    </div>
+                    <div>
+                        <label for="contra"></label>
+                        <input type="password" name="contra" id="contra" value="" required
+                        placeholder="Contraseña chunga"
+                        autofocus
+                        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                        />
+                    </div>
+                    <input type="submit" name="submit" value="Enviar" id="submit5"/>
+                </form>
+            </div>
+		<div>
+        <form class="cmxform" id="registro" method="post" action="../formularios.php">
+            <fieldset>
+            
+                <p>
+                    <label for="cname">Nombre de usuario</label>
+                    <input id="cname" name="name" minlength="2" type="text" required>
+                </p>
+                <p>
+                    <label for="cemail">E-Mail (requerido)</label>
+                    <input id="cemail" type="email" name="email" required>
+                </p>
+                <p>
+                    <label for="cemail2">Repite E-Mail (requerido)</label>
+                    <input id="cemail2" type="email" name="email2" required>
+                </p>
+                <p>
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" name="password" minlength="8" required>
+                </p>
+                <p>
+                    <label for="rpassword">Repite Contraseña</label>
+                    <input id="rpassword" type="password" name="rpassword" minlength="8"  required>
+                </p>
+                <p>
+                    <label for="condiciones">Acepta las condiciones</label>
+                    <input id="condiciones" name="condiciones" type="checkbox" required/>
+                </p>
+                <p>
+                    <input class="submit" type="submit" value="Submit">
+                </p>
+            </fieldset>
+        </form>
+    </div>
+	</body>
+</html>
