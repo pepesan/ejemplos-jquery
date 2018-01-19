@@ -103,6 +103,11 @@ function cogeEstablecimientos(){
 }
 function jsonCallback(json){
   console.log(json);
+    $("#resultados").html("");
+    $.each(json,function(i,dato){
+        console.log(dato);
+       $("#resultados").append("<p>"+dato.documentName+": "+dato.locality+"</p>"); 
+    });
 }
 
 
@@ -127,7 +132,7 @@ function init() {
     $("#postButton").click(peticionPost);
     $("#postJsonButton").click(peticionPostJson);
     $("#cogeEventos").click(cogeEventos);
-$("#establecimientos").click(cogeEstablecimientos);
+    $("#establecimientos").click(cogeEstablecimientos);
 }
 
 $("document").ready(init);
