@@ -6,17 +6,19 @@ function presentaDatos(codigoHTML){
 }
 
 function peticionGet() {
-    $.get("ajax-parcial.html",
+   $.get("ajax-parcial.html",
           //success function
           presentaDatos)
-        .done(function () {
+       .done(function () {
             console.log("second success");
         })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-        console.log("error " + textStatus);
-        console.log("incoming Text " + jqXHR.responseText);
-        console.log("error " + errorThrown);
-        })
+       .fail(
+            function (jqXHR, textStatus, errorThrown) {
+                console.log("error " + textStatus);
+                console.log("incoming Text " + jqXHR.responseText);
+                console.log("error " + errorThrown);
+            }
+        )
         .always(function () {
             console.log("finished");
         });
@@ -29,32 +31,41 @@ function limpiaResultados() {
 function peticionGetJson() {
     limpiaResultados();
     $("#resultados").html("<h1>Cargando</h1>");
-    $.getJSON("ajax.json", function (resultados) {
+        $.getJSON("ajax.json", 
+            function (resultados) {
             console.log("entro en success");
             limpiaResultados();
-        console.log(resultados);
-            /*
-            for (i in resultados){
-                var resultado=resultados[i];
-            }
-            */
-            $.each(resultados, function (i, resultado) {
-                $("#resultados").append("<p>" + resultado.nombre + ":"+resultado.diputados+"</p>");
+            console.log(resultados);
+                /*
+                for (i in resultados){
+                    var resultado=resultados[i];
+                }
+                */
+                $.each(resultados, function (i, resultado) {
+                    $("#resultados").append("<p>" + resultado.nombre + ":"+resultado.diputados+"</p>");
+                });
+            })
+            .done(function () {
+                console.log("second success");
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("error " + textStatus);
+                console.log("incoming Text " + jqXHR.responseText);
+                console.log("error " + errorThrown);
+                }
+            )
+            .always(function () {
+                console.log("complete");
             });
-        }).done(function () {
-            console.log("second success");
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-        console.log("error " + textStatus);
-        console.log("incoming Text " + jqXHR.responseText);
-        console.log("error " + errorThrown);
-        })
-        .always(function () {
-            console.log("complete");
-        });
+    
 }
 function peticionPost(){
-    $.post("formularios.php",{"nombre":"valor","pass":"mipassword"} ,function (datos) {
+    $.post("formularios.php",
+        {
+            "nombre":"pepe",
+            "pass":"mipassword"
+        } ,
+    function (datos) {
             console.log("success");
             $("#resultados").html(datos);
         })
@@ -69,11 +80,20 @@ function peticionPost(){
         });
 }
 function peticionPostJson(){
-    $.post("ajax.php",JSON.stringify({"nombre":"valor","pass":"mipassword"} ),function (datos) {
+    $.post(
+        "ajax.php",
+        JSON.stringify(
+            {
+                "nombre":"pepe",
+                "pass":"mipassword"
+            } 
+        ),
+        function (datos) {
             console.log("success");
-        console.log(datos);
+            console.log(datos);
             $("#resultados").html("<p>nombre:"+datos.nombre+"</p>");
-        },"json")
+        },
+        "json")
         .done(function () {
             console.log("second success");
         })
