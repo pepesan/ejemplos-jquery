@@ -1,13 +1,19 @@
 var app={
     resultados:[],
     resultadosFiltrados:[],
+    resultadosPaginados:[],
+    paginaActual:0,
+    resultadosPorPagina:10,
     presentaListado:function(){
         $("#listado").html("");
+        //console.log(app.resultadosFiltrados);
         $.each(app.resultadosFiltrados,function(i,item){
-            var nuevoLi="<li><a href='#'>"+item.titulo
-            //+app.calculaBotones()
-            +"</a></li>";
-            $("#listado").append(nuevoLi);
+            if(item!=undefined){
+                var nuevoLi="<li><a href='#'>"+item.titulo
+                //+app.calculaBotones()
+                +"</a></li>";
+                $("#listado").append(nuevoLi);
+            }
         });
         /*
           for( var item of app.resultados){
@@ -16,9 +22,47 @@ var app={
           }
         */
     },
+    calculaResultadosPorPagina:function(){
+        app.resultadosPaginados=[];
+        var primerResultado=app.paginaActual*app.resultadosPorPagina;
+        for (var i=primerResultado;i<(primerResultado+app.resultadosPorPagina);i++){
+            var item=app.resultadosFiltrados[i];
+            app.resultadosPaginados.push(item);
+        }
+        app.resultadosFiltrados=app.resultadosPaginados;
+    },
+    presentaPaginador:function(){
+        var paginasTotales=Math.round(app.resultados.length/app.resultadosPorPagina);
+        var muestraPrevio=(app.paginaActual!=0);
+        var muestraSiguiente=((app.paginaActual+1)!=paginasTotales);
+        var paginadorHTML="<div>"
+        +"<ul class='pagination'>";
+        if(muestraPrevio){
+            paginadorHTML+="<li><a id='previo' href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>";
+        }
+        for(var i=1;i<=paginasTotales;i++){
+                paginadorHTML+="<li ";
+                if((app.paginaActual+1)==i){
+                    paginadorHTML+=" class='active' ";   
+                }
+                paginadorHTML+=">";
+                
+                   
+                paginadorHTML+="<a href='#'>"+i+"</a></li>";
+        }
+        if(muestraSiguiente){
+            paginadorHTML+="<li><a id='siguiente' href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>";
+        }
+        paginadorHTML+="</ul>"
+        +"<h4>pagina "+(app.paginaActual+1)+"/"+paginasTotales+"</h4></div>";
+        $("#paginador").html("");
+        console.log(paginadorHTML);
+        $("#paginador").append(paginadorHTML);
+    },
     presentaTabla:function(){
         $("#tabla tbody").html("");
         $.each(app.resultadosFiltrados,function(i,item){
+            if(item!=undefined){
               var nuevaFila="<tr>"
               +"<td>"+item.titulo+"</td>"
               +"<td>"+item.autor+"</td>"
@@ -27,7 +71,9 @@ var app={
               +"</td>"
               +"</tr>";
               $("#tabla tbody").append(nuevaFila);
+            }
           });
+        $('#tabla').DataTable();
         /*
           for( var item of app.resultados){
               var nuevaFila="<tr>"
@@ -49,14 +95,16 @@ var app={
                     +"<button id='' class='btn btn-danger'> <span class='glyphicon glyphicon-trash'></span> Borrar</button>";
     },
     presentaCol:function(item){
-        var columna="<div class='col-md-6 borde'>"
-                    +"<h2 class='text-center'>"+item.titulo+"</h2>"
-                    +"<h2 class='text-center'>"+item.autor  +"</h2>"
-                    +"<div class='text-center'>"
-                    +app.calculaBotones()
-                    +"</div>"
-                    +"</div>";
-                  var ultimaFila=$(".container .row:last").append(columna);
+        if(item!=undefined){
+            var columna="<div class='col-md-6 borde'>"
+                        +"<h2 class='text-center'>"+item.titulo+"</h2>"
+                        +"<h2 class='text-center'>"+item.autor  +"</h2>"
+                        +"<div class='text-center'>"
+                        +app.calculaBotones()
+                        +"</div>"
+                        +"</div>";
+                      var ultimaFila=$(".container .row:last").append(columna);
+        }
     },
     presentaGrid:function(){
         var filaPar=0;
@@ -85,7 +133,7 @@ var app={
         for(var item of app.resultados){
             if(
                 item.titulo.includes(patron)
-                )
+                
             ){
                 app.resultadosFiltrados.push(item);
             }
@@ -121,6 +169,7 @@ var app={
     filtraDatos:function(){
         var patron=$(this).val();
         app.filtraPorDosCampos(patron);
+        //app.calculaResultadosPorPagina();
         console.log(app.resultadosFiltrados);
         app.presentaListado();
         app.presentaTabla();
@@ -133,6 +182,8 @@ var app={
         function(datos){
             app.resultados=datos;
             app.resultadosFiltrados=datos;
+            //app.calculaResultadosPorPagina();
+            //app.presentaPaginador();
             console.log(app.resultados);
             app.presentaListado();
             app.presentaTabla();
