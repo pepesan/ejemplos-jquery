@@ -187,6 +187,7 @@ var app={
             console.log(app.resultados);
             app.presentaListado();
             app.presentaTabla();
+            $('#tabla').DataTable();
             app.presentaGrid();
             $("#buscar").keyup(app.filtraDatos);
         })
