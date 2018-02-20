@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="autor" content="David Vaquero" />
+    <meta name="generator" content="Brackets" />
+    <meta name="copyright" content="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="html, ejemplo xhtml, esqueleto xhtml" />
+    <meta name="description" content="Ejemplo de Esqueleto de HTML5 con Jquery" />
+    <title>Mi titulo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px 0;
+        }
+
+        .grid {
+            position: relative;
+            width: 48%;
+            background: #ccc;
+            border: 5px solid transparent;
+        }
+
+        .item {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            margin: 5px;
+            z-index: 1;
+        }
+
+        .item.muuri-item-hidden {
+            z-index: 0;
+        }
+
+        .item.muuri-item-releasing {
+            z-index: 2;
+        }
+
+        .item.muuri-item-dragging {
+            z-index: 3;
+        }
+
+        .item-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: red;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .grid-2 .item-content {
+            background: green;
+        }
+
+        .item.muuri-item-dragging .item-content,
+        .item.muuri-item-releasing .item-content {
+            background: blue;
+        }
+
+    </style>
+    <script src="muuri/web-animations.min.js"></script>
+    <script src="muuri/hammer.min.js"></script>
+    <script src="muuri/muuri.js"></script>
+
+</head>
+
+<body>
+    <div class="grid grid-1">
+        <div class="item">
+            <div class="item-content">1</div>
+        </div>
+        <div class="item">
+            <div class="item-content">2</div>
+        </div>
+        <div class="item">
+            <div class="item-content">3</div>
+        </div>
+        <div class="item">
+            <div class="item-content">4</div>
+        </div>
+        <div class="item">
+            <div class="item-content">5</div>
+        </div>
+        <div class="item">
+            <div class="item-content">6</div>
+        </div>
+        <div class="item">
+            <div class="item-content">7</div>
+        </div>
+        <div class="item">
+            <div class="item-content">8</div>
+        </div>
+        <div class="item">
+            <div class="item-content">9</div>
+        </div>
+        <div class="item">
+            <div class="item-content">10</div>
+        </div>
+        <div class="item">
+            <div class="item-content">11</div>
+        </div>
+        <div class="item">
+            <div class="item-content">12</div>
+        </div>
+        <div class="item">
+            <div class="item-content">13</div>
+        </div>
+        <div class="item">
+            <div class="item-content">14</div>
+        </div>
+        <div class="item">
+            <div class="item-content">15</div>
+        </div>
+        <div class="item">
+            <div class="item-content">16</div>
+        </div>
+        <div class="item">
+            <div class="item-content">17</div>
+        </div>
+        <div class="item">
+            <div class="item-content">18</div>
+        </div>
+        <div class="item">
+            <div class="item-content">19</div>
+        </div>
+        <div class="item">
+            <div class="item-content">20</div>
+        </div>
+    </div>
+
+    <div class="grid grid-2">
+        <div class="item">
+            <div class="item-content">1</div>
+        </div>
+        <div class="item">
+            <div class="item-content">2</div>
+        </div>
+        <div class="item">
+            <div class="item-content">3</div>
+        </div>
+        <div class="item">
+            <div class="item-content">4</div>
+        </div>
+        <div class="item">
+            <div class="item-content">5</div>
+        </div>
+        <div class="item">
+            <div class="item-content">6</div>
+        </div>
+        <div class="item">
+            <div class="item-content">7</div>
+        </div>
+        <div class="item">
+            <div class="item-content">8</div>
+        </div>
+        <div class="item">
+            <div class="item-content">9</div>
+        </div>
+        <div class="item">
+            <div class="item-content">10</div>
+        </div>
+        <div class="item">
+            <div class="item-content">11</div>
+        </div>
+        <div class="item">
+            <div class="item-content">12</div>
+        </div>
+        <div class="item">
+            <div class="item-content">13</div>
+        </div>
+        <div class="item">
+            <div class="item-content">14</div>
+        </div>
+        <div class="item">
+            <div class="item-content">15</div>
+        </div>
+        <div class="item">
+            <div class="item-content">16</div>
+        </div>
+        <div class="item">
+            <div class="item-content">17</div>
+        </div>
+        <div class="item">
+            <div class="item-content">18</div>
+        </div>
+        <div class="item">
+            <div class="item-content">19</div>
+        </div>
+        <div class="item">
+            <div class="item-content">20</div>
+        </div>
+    </div>
+    <script>
+        var grid1 = new Muuri('.grid-1', {
+            dragEnabled: true,
+            dragContainer: document.body,
+            dragSort: function() {
+                return [grid1, grid2]
+            }
+        });
+
+        var grid2 = new Muuri('.grid-2', {
+            dragEnabled: true,
+            dragContainer: document.body,
+            dragSort: function() {
+                return [grid1, grid2]
+            }
+        });
+
+    </script>
+</body>
+
+</html>
