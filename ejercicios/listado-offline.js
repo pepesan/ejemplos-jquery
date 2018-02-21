@@ -44,7 +44,7 @@ function conectaDB() {
         console.log("success: " + db);
         var datos=cogeTodos();
         presentaListado(datos);
-        
+        peticionAjax();
     };
 
     request.onupgradeneeded = function (event) {
@@ -121,7 +121,6 @@ function init(){
     } else {
         conectaDB();
         
-        peticionAjax();
         console.log("IndexedDB HTML5 está soportada en este navegador.");
     }
     
