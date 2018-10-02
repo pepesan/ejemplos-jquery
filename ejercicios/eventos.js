@@ -5,11 +5,13 @@ function pulsado(){
     console.log("Botón pulsado");
 }
 function cambiaBorde(){
-    $("#otroboton").css("border","1px red solid");
-    $(this).css("border","1px red solid");
+    //$("#otroboton").css("border","1px red solid");
+    $("#otroboton").addClass("rojo");
+    //$(this).css("border","1px red solid");
 }
 function cambiaFondo(){
-    $(this).css("background-color","green");
+    //$(this).css("background-color","green");
+    $(this).addClass("verde");
     //$("#tercerboton").css("background-color","green");
 }
 function muestraBlur(){
@@ -19,7 +21,12 @@ function muestraFocus(){
     console.log("focus");
 }
 function gestionaLogin(evento){
-    
+
+    if($("#username").val()=="" ||
+        $("#contra").val()==""){
+        evento.preventDefault();
+    }
+    /*
     if($("#username").val()!="" &&
       $("#contra").val()!=""){
        //caso de que el formulario valide
@@ -28,6 +35,7 @@ function gestionaLogin(evento){
        //Caso de novalidación
        evento.preventDefault();
     }
+    */
 }
 function entrado(){
     console.log("ha entrado");
@@ -36,10 +44,12 @@ function salido(){
     console.log("ha salido");
 }
 function validaCampo(){
-    if($("#campo").val()!=""){
-        $("#campo").css("border","1px solid green");
+    if($("#campo").val()==""){
+        $("#campo").addClass("rojo");
+        $("#campo").removeClass("verde");
     }else{
-        $("#campo").css("border","1px solid red");
+        $("#campo").addClass("verde");
+        $("#campo").removeClass("rojo");
     }
 }
 function init(){

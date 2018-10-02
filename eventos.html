@@ -9,12 +9,13 @@
 		<meta name="keywords" content="html, ejemplo xhtml, esqueleto xhtml" />
 		<meta name="description" content="Ejemplo de Esqueleto de HTML5 con Jquery" />
 		<title>Mi titulo</title>
-		<script src="js/jquery-3.2.1.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/eventos.js"></script>
 	</head>
 	<body>
 		<h1>Ejecución de código JQuery</h1>
 		<button id="b1">Púlsame!</button>
+		<p><a href="https://google.es" id="enlace">Enlace a google</a> </p>
 		<div>
             <form id="login" action="formularios.php" method="post">
                     <div>
@@ -28,7 +29,6 @@
                         <input type="password" name="contra" id="contra" value="" required
                         placeholder="Contraseña chunga"
                         autofocus
-                        pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                         />
                     </div>
                     <input type="submit" name="submit" value="Enviar" id="submit5"/>

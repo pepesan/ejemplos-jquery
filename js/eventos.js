@@ -11,9 +11,19 @@ function init(){
     $("#b1").on("click",function (){
         console.log("Click molón!"); 
     });
+    // Para cancelar el uso de una función por evento
     $("#b1").off("click",botonPulsado);
-    $("#b1").off("click");
-    $("#login").submit(gestionaFormulario);
+    // quita todas la funcioens relacionadas con un evento concreto
+    //$("#b1").off("click");
+
+    $("#enlace").click(
+        (evento)=>{
+            evento.preventDefault();
+            evento.stopPropagation();
+            console.log("Enlace pulsado");
+        }
+    );
+    //$("#login").submit(gestionaFormulario);
 }
 $(document).ready(init);
 //document.addEventListener("DOMContentLoaded",init);
